@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daily Command</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<section id="auth-screen" class="auth-screen">
+  <div class="glass auth-card">
+    <h1 class="brand">Daily <span>Command</span></h1>
+    <p class="tagline">Own your day. One task at a time.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="login">Login</button>
+      <button class="tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <form id="login-form" class="auth-form">
+      <label>Email<input type="email" name="email" required /></label>
+      <label>Password<input type="password" name="password" required /></label>
+      <button type="submit" class="btn-gold">Login</button>
+      <p class="form-msg" id="login-msg"></p>
+    </form>
+
+    <form id="signup-form" class="auth-form hidden">
+      <label>Name<input type="text" name="name" required /></label>
+      <label>Email<input type="email" name="email" required /></label>
+      <label>Phone<input type="tel" name="phone" required /></label>
+      <label>Password<input type="password" name="password" minlength="4" required /></label>
+      <button type="submit" class="btn-gold">Create Account</button>
+      <p class="form-msg" id="signup-msg"></p>
+    </form>
+  </div>
+</section>
+
+<!-- APP -->
+<main id="app" class="app hidden">
+  <header class="topbar glass">
+    <div class="profile-chip">
+      <div class="avatar-wrap">
+        <img id="header-avatar" alt="Profile" />
+      </div>
+      <div class="who">
+        <span class="hello">Welcome</span>
+        <strong id="header-name">User</strong>
+      </div>
+    </div>
+    <nav class="topnav">
+      <button id="btn-settings" class="btn-ghost">Settings</button>
+      <button id="btn-logout" class="btn-ghost">Logout</button>
+    </nav>
+  </header>
+
+  <section class="content">
+    <aside class="glass panel days-panel">
+      <h3>Select a Day</h3>
+      <div id="day-list" class="day-list"></div>
+    </aside>
+
+    <section class="glass panel schedule-panel">
+      <div class="schedule-head">
+        <div>
+          <h2 id="schedule-title">Today's Schedule</h2>
+          <p id="schedule-sub" class="muted">Plan your day, your way.</p>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-info">
+            <span id="progress-count">0/0</span> tasks
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- Start-time prompt -->
+      <div id="start-prompt" class="start-prompt">
+        <label>What time do you plan to start your day today?</label>
+        <div class="start-row">
+          <input type="time" id="start-time-input" />
+          <button id="set-start-btn" class="btn-gold">Set Start Time</button>
+        </div>
+      </div>
+
+      <!-- Task area -->
+      <div id="task-area" class="task-area hidden">
+        <div class="start-shown">
+          Day starts at <strong id="start-shown-time">--:--</strong>
+          <button id="change-start-btn" class="linkish">change</button>
+        </div>
+
+        <form id="task-form" class="task-form">
+          <input type="time" id="task-time" required />
+          <input type="text" id="task-title" placeholder="Add a task (e.g. Morning workout)" required />
+          <button type="submit" class="btn-gold">Add</button>
+        </form>
+
+        <ul id="task-list" class="task-list"></ul>
+        <p id="empty-msg" class="muted empty-msg">No tasks yet — add your first one above.</p>
+      </div>
+    </section>
+  </section>
+</main>
+
+<!-- SETTINGS MODAL -->
+<div id="settings-modal" class="modal hidden">
+  <div class="glass modal-card">
+    <div class="modal-head">
+      <h2>Settings</h2>
+      <button class="close-x" id="close-settings">×</button>
+    </div>
+
+    <div class="settings-avatar">
+      <div class="avatar-wrap large">
+        <img id="settings-avatar" alt="Profile" />
+      </div>
+      <label class="btn-ghost upload-label">
+        Upload New Picture
+        <input type="file" id="avatar-input" accept="image/*" hidden />
+      </label>
+    </div>
+
+    <form id="profile-form" class="auth-form">
+      <label>Name<input type="text" name="name" id="s-name" required /></label>
+      <label>Phone<input type="tel" name="phone" id="s-phone" required /></label>
+      <label>Email<input type="email" id="s-email" disabled /></label>
+      <button type="submit" class="btn-gold">Save Profile</button>
+      <p class="form-msg" id="profile-msg"></p>
+    </form>
+
+    <hr class="divider" />
+
+    <form id="password-form" class="auth-form">
+      <h3 class="sub">Change Password</h3>
+      <label>Current Password<input type="password" id="curr-pass" required /></label>
+      <label>New Password<input type="password" id="new-pass" minlength="4" required /></label>
+      <button type="submit" class="btn-gold">Update Password</button>
+      <p class="form-msg" id="pass-msg"></p>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
